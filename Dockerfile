@@ -23,8 +23,8 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install
 
-# Construir la aplicación
+# Construir la aplicación de Vue.js
 RUN npm run build
 
-# Comando para iniciar la aplicación
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
+# Iniciar Laravel y Vue.js
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=80 & npm run dev"]
